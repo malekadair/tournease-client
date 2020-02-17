@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "alias": "maleks-tournease-client",
+  "name": "tournease-client",
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ]
+}

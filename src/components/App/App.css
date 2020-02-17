@@ -1,0 +1,15 @@
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  min-height: 10vh;
+  background: #ccc;
+}
+
+.nav-links {
+  width: 25%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
