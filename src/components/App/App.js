@@ -4,7 +4,6 @@ import Nav from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 import Home from "../Home/Home";
 import CreateTournament from "../CreateTournament/CreateTournament";
-import TournamentList from "../TournamentList/TournamentList";
 import TournamentDetails from "../TournamentDetails/TournamentDetails";
 import dummyStore from "./dummyStore";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -14,7 +13,8 @@ class App extends Component {
     const { tourneys } = dummyStore;
     super();
     this.state = {
-      tournaments: tourneys
+      tournaments: tourneys,
+      isLoading: false
     };
   }
 
@@ -28,15 +28,27 @@ class App extends Component {
               exact
               path="/"
               render={routeProps => {
-                const { tournaments } = this.state;
-                return <Home {...routeProps} tournaments={tournaments} />;
+                const { tournaments, isLoading } = this.state;
+                return (
+                  <Home
+                    {...routeProps}
+                    tournaments={tournaments}
+                    isLoading={isLoading}
+                  />
+                );
               }}
             />
-            <Route exact path="/create" component={CreateTournament} />
+            <Route
+              exact
+              path="/create"
+              render={routeProps => {
+                return <CreateTournament {...routeProps} />;
+              }}
+            />
             <Route
               path="/:tournid"
               render={routeProps => {
-                const { tournaments } = this.state;
+                const { tournaments, isLoading } = this.state;
                 const { tournid } = routeProps.match.params;
                 const foundTournament = tournaments.find(
                   ({ id }) => id == tournid
@@ -46,6 +58,7 @@ class App extends Component {
                   <TournamentDetails
                     {...routeProps}
                     tournament={foundTournament}
+                    isLoading={isLoading}
                   />
                 );
               }}

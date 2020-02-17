@@ -1,17 +1,30 @@
 import React, { Component } from "react";
 import Tournament from "../Tournament/Tournament";
+import Loading from "../Loading/Loading";
+
 class TournamentList extends Component {
+  componentDidMount() {
+    console.log("loading");
+    this.setState({
+      isLoading: true
+    });
+    setTimeout(() => {
+      console.log("done loading");
+      this.setState({
+        isLoading: false
+      });
+    }, 1500);
+  }
+
   render() {
-    console.log("route props:", this.props);
-    const { tournaments } = this.props;
+    const { tournaments, isLoading } = this.props;
     const tourneyList = tournaments.map(tourney => {
       return <Tournament key={tourney.id} tourney={tourney} />;
     });
     return (
       <div>
-        <h1>Tournament</h1>
-        <section>{tourneyList}</section>
-        {/* <Tournament name={name} game={game} details={details} /> */}
+        <h1>Tournaments</h1>
+        {isLoading ? <Loading /> : <section>{tourneyList}</section>}
       </div>
     );
   }

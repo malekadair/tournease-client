@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class TournamentDetails extends Component {
   render() {
-    const { name, game, details } = this.props;
+    const { name, game, details } = this.props.tournament;
     return (
       <div>
         <h1>{name}</h1>
