@@ -21,9 +21,7 @@ class Create extends Component {
       ? this.setState({ [name]: checked })
       : this.setState({ [name]: value });
   }
-  handleSubmit(event) {
-    console.log(event);
-  }
+  handleSubmit(event) {}
   render() {
     const { title, date, time, game, fee, address, moreDetails } = this.state;
     return (

@@ -4,12 +4,10 @@ import Loading from "../Loading/Loading";
 
 class TournamentList extends Component {
   componentDidMount() {
-    console.log("loading");
     this.setState({
       isLoading: true
     });
     setTimeout(() => {
-      console.log("done loading");
       this.setState({
         isLoading: false
       });

@@ -3,13 +3,24 @@ import { Link } from "react-router-dom";
 
 class Tournament extends Component {
   render() {
-    const { name, game, details, id } = this.props.tourney;
-    console.log("tournament props", this.props);
+    const {
+      title,
+      date,
+      time,
+      game,
+      fee,
+      address,
+      moreDetails,
+      id
+    } = this.props.tourney;
     return (
       <div>
-        <h1>{name}</h1>
+        <h1>{title}</h1>
+        <h2>{date}</h2>
+        <h2>{time}</h2>
         <h2>{game}</h2>
-        <p>{details}</p>
+        <h2>${fee}</h2>
+        <h2>{address}</h2>
         <Link to={`/${id}`}>More details</Link>
       </div>
     );
