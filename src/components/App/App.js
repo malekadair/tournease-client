@@ -17,7 +17,13 @@ class App extends Component {
       isLoading: false
     };
   }
-
+  handleSubmit = (event, data) => {
+    event.preventDefault();
+    this.setState(prevState => {
+      return { tournaments: [...prevState.tournaments, data] };
+    });
+    console.log(this.state.tournaments);
+  };
   render() {
     return (
       <Router>
@@ -42,7 +48,13 @@ class App extends Component {
               exact
               path="/create"
               render={routeProps => {
-                return <CreateTournament {...routeProps} />;
+                return (
+                  <CreateTournament
+                    tournamentsLength={this.state.tournaments.length + 1}
+                    handleSubmit={this.handleSubmit}
+                    {...routeProps}
+                  />
+                );
               }}
             />
             <Route

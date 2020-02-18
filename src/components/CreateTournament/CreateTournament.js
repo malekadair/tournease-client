@@ -12,21 +12,24 @@ class Create extends Component {
       address: "",
       moreDetails: ""
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleChange(event) {
+  handleChange = event => {
     const { name, value, type, checked } = event.target;
     type === "checkbox"
       ? this.setState({ [name]: checked })
       : this.setState({ [name]: value });
-  }
-  handleSubmit(event) {}
+  };
+
   render() {
     const { title, date, time, game, fee, address, moreDetails } = this.state;
     return (
       <section className="signup">
-        <form onSubmit={this.handleSubmit}>
+        <form
+          onSubmit={event => {
+            const data = { id: this.props.tournamentsLength, ...this.state };
+            this.props.handleSubmit(event, data);
+          }}
+        >
           <div>
             <input
               type="text"
