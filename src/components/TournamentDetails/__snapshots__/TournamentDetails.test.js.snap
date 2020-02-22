@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TournamentDetails component renders a .TournamentDetails by default 1`] = `undefined`;
+
+exports[`TournamentDetails component renders the TournamentDetails given props 1`] = `undefined`;

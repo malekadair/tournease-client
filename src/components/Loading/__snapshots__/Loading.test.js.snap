@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading component renders a .Loading by default 1`] = `undefined`;
+
+exports[`Loading component renders the Loading given props 1`] = `undefined`;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component renders a .Login by default 1`] = `undefined`;
+
+exports[`Login component renders the Login given props 1`] = `undefined`;

@@ -5,6 +5,7 @@ import Footer from "../Footer/Footer";
 import Home from "../Home/Home";
 import CreateTournament from "../CreateTournament/CreateTournament";
 import TournamentDetails from "../TournamentDetails/TournamentDetails";
+import Login from "../Login/Login";
 import dummyStore from "./dummyStore";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -19,10 +20,11 @@ class App extends Component {
   }
   handleSubmit = (event, data) => {
     event.preventDefault();
-    this.setState(prevState => {
-      return { tournaments: [...prevState.tournaments, data] };
+    const newTournaments = [...this.state.tournaments, data];
+    console.log("newtournamanets:", newTournaments);
+    this.setState({
+      tournaments: newTournaments
     });
-    console.log(this.state.tournaments);
   };
   render() {
     return (
@@ -50,6 +52,19 @@ class App extends Component {
               render={routeProps => {
                 return (
                   <CreateTournament
+                    tournamentsLength={this.state.tournaments.length + 1}
+                    handleSubmit={this.handleSubmit}
+                    {...routeProps}
+                  />
+                );
+              }}
+            />
+            <Route
+              exact
+              path="/login"
+              render={routeProps => {
+                return (
+                  <Login
                     tournamentsLength={this.state.tournaments.length + 1}
                     handleSubmit={this.handleSubmit}
                     {...routeProps}

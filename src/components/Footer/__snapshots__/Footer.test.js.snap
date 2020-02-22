@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component renders a .Footer by default 1`] = `undefined`;
+
+exports[`Footer component renders the Footer given props 1`] = `undefined`;

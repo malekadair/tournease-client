@@ -14,13 +14,13 @@ class TournamentDetails extends Component {
     } = this.props.tournament;
     return (
       <div>
-        <h1>{title}</h1>
-        <h2>{date}</h2>
-        <h2>{time}</h2>
-        <h2>{game}</h2>
-        <h2>{fee}</h2>
-        <h2>{address}</h2>
-        <p>{moreDetails}</p>
+        <h1>Tournament Name: {title}</h1>
+        <h2>Date: {date}</h2>
+        <h2>Start Time: {time}</h2>
+        <h2>Game Type: {game}</h2>
+        <h2>Entry Fee: ${fee}</h2>
+        <h2>Address of Venue: {address}</h2>
+        <p>Things to note: {moreDetails}</p>
       </div>
     );
   }

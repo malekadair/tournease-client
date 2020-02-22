@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home component renders a .Home by default 1`] = `undefined`;
+
+exports[`Home component renders the Home given props 1`] = `undefined`;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateTournament component renders a .CreateTournament by default 1`] = `undefined`;
+
+exports[`CreateTournament component renders the CreateTournament given props 1`] = `undefined`;

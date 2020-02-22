@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav component renders a .Nav by default 1`] = `undefined`;
+
+exports[`Nav component renders the Nav given props 1`] = `undefined`;

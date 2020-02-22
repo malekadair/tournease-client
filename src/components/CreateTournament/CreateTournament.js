@@ -26,7 +26,10 @@ class Create extends Component {
       <section className="signup">
         <form
           onSubmit={event => {
-            const data = { id: this.props.tournamentsLength, ...this.state };
+            const data = {
+              id: this.props.tournamentsLength,
+              ...this.state
+            };
             this.props.handleSubmit(event, data);
           }}
         >
@@ -70,13 +73,6 @@ class Create extends Component {
           <br />
 
           <div>
-            {/* <input
-              type="text"
-              value={game}
-              name="game"
-              placeholder="Game"
-              onChange={this.handleChange}
-            /> */}
             <label>Game Type: </label>
             <select
               value={this.state.game}
