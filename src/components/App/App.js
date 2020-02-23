@@ -6,6 +6,8 @@ import Home from "../Home/Home";
 import CreateTournament from "../CreateTournament/CreateTournament";
 import TournamentDetails from "../TournamentDetails/TournamentDetails";
 import Login from "../Login/Login";
+// import config from "../config";
+
 import dummyStore from "./dummyStore";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -14,10 +16,33 @@ class App extends Component {
     const { tourneys } = dummyStore;
     super();
     this.state = {
-      tournaments: tourneys,
+      tournaments: [],
       isLoading: false
     };
   }
+  setTournaments = tournaments => {
+    this.setState({
+      tournaments,
+      error: null
+    });
+  };
+  componentDidMount() {
+    fetch(`http://localhost:8000/api/`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json"
+        // 'Authorization': `Bearer ${config.API_KEY}`
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => Promise.reject(error));
+        }
+        return res.json();
+      })
+      .then(this.setTournaments);
+  }
+
   handleSubmit = (event, data) => {
     event.preventDefault();
     const newTournaments = [...this.state.tournaments, data];
