@@ -14,7 +14,7 @@ class Tournament extends Component {
       id
     } = this.props.tourney;
     return (
-      <div>
+      <div className="tournament">
         <h1>{title}</h1>
         <h2>{date}</h2>
         <h2>{time}</h2>

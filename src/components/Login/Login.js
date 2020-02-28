@@ -1,46 +1,55 @@
 import React, { Component } from "react";
+import AuthApiService from "../../services/auth-api-service";
+import TokenService from "../../services/TokenService";
 
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      username: "",
-      password: ""
-    };
   }
+  state = { error: null };
+  handleSubmitJwtAuth = ev => {
+    ev.preventDefault();
+    this.setState({ error: null });
+    const { user_name, password } = ev.target;
 
-  handleChange = event => {
-    const { name, value, type, checked } = event.target;
-    type === "checkbox"
-      ? this.setState({ [name]: checked })
-      : this.setState({ [name]: value });
+    AuthApiService.postLogin({
+      user_name: user_name.value,
+      password: password.value
+    })
+      .then(res => {
+        user_name.value = "";
+        password.value = "";
+        TokenService.saveAuthToken(res.authToken);
+        this.props.onLoginSuccess();
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
   };
 
   render() {
     return (
       <section className="login">
         <h1>Login</h1>
-        <form className="loginForm">
-          <label htmlFor="username">Username:</label>
+        <form className="loginForm" onSubmit={this.handleSubmitJwtAuth}>
+          <label htmlFor="user_name">user_name:</label>
           <input
             type="text"
-            name="username"
-            value={this.state.username}
+            name="user_name"
+            value={this.state.user_name}
             required
-            onChange={this.handleChange}
           />
           <br />
 
           <label htmlFor="password">password:</label>
           <input
-            type="text"
+            type="password"
             name="password"
             value={this.state.password}
             required
-            onChange={this.handleChange}
           />
           <br />
-          <button>Login</button>
+          <button type="submit">Login</button>
         </form>
       </section>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Nav from "../Nav/Nav";
 import Footer from "../Footer/Footer";
@@ -6,10 +7,11 @@ import Home from "../Home/Home";
 import CreateTournament from "../CreateTournament/CreateTournament";
 import TournamentDetails from "../TournamentDetails/TournamentDetails";
 import Login from "../Login/Login";
+import TokenService from "../../services/TokenService";
+import PrivateRoute from "../Utils/PrivateRoute";
+import PublicOnlyRoute from "../Utils/PublicOnlyRoute";
 // import config from "../config";
-
 import dummyStore from "./dummyStore";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
   constructor() {
@@ -26,12 +28,13 @@ class App extends Component {
       error: null
     });
   };
+
   componentDidMount() {
     fetch(`http://localhost:8000/api/`, {
       method: "GET",
       headers: {
-        "content-type": "application/json"
-        // 'Authorization': `Bearer ${config.API_KEY}`
+        "content-type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res => {
@@ -59,7 +62,7 @@ class App extends Component {
           <Switch>
             <Route
               exact
-              path="/"
+              path={"/"}
               render={routeProps => {
                 const { tournaments, isLoading } = this.state;
                 return (
@@ -71,9 +74,9 @@ class App extends Component {
                 );
               }}
             />
-            <Route
+            <PrivateRoute
               exact
-              path="/create"
+              path={"/create"}
               render={routeProps => {
                 return (
                   <CreateTournament
@@ -84,21 +87,22 @@ class App extends Component {
                 );
               }}
             />
-            <Route
+            <PublicOnlyRoute
               exact
-              path="/login"
-              render={routeProps => {
-                return (
-                  <Login
-                    tournamentsLength={this.state.tournaments.length + 1}
-                    handleSubmit={this.handleSubmit}
-                    {...routeProps}
-                  />
-                );
-              }}
+              path={"/login"}
+              component={Login}
+              // render={routeProps => {
+              //   return (
+              //     <Login
+              //       tournamentsLength={this.state.tournaments.length + 1}
+              //       handleSubmit={this.handleSubmit}
+              //       {...routeProps}
+              //     />
+              //   );
+              // }}
             />
-            <Route
-              path="/:tournid"
+            <PrivateRoute
+              path={"/:tournid"}
               render={routeProps => {
                 const { tournaments, isLoading } = this.state;
                 const { tournid } = routeProps.match.params;
