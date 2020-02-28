@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TournamentsContext from "../../contexts/tournamentListContext";
+import TournamentApiService from "../../services/tournament-api-service";
 
 class Create extends Component {
   static contextType = TournamentsContext;
@@ -12,9 +13,20 @@ class Create extends Component {
       game: "",
       fee: "",
       address: "",
-      moreDetails: ""
+      moredetails: ""
     };
   }
+
+  handleSubmit = (ev, data) => {
+    ev.preventDefault();
+    // const { thing } = this.context;
+    // const { text, rating } = ev.target;
+
+    TournamentApiService.postTournament(data)
+      .then()
+      .catch(this.context.setError);
+  };
+
   handleChange = event => {
     const { name, value, type, checked } = event.target;
     type === "checkbox"
@@ -23,16 +35,13 @@ class Create extends Component {
   };
 
   render() {
-    const { title, date, time, game, fee, address, moreDetails } = this.state;
+    const { title, date, time, game, fee, address, moredetails } = this.state;
     return (
       <section className="signup">
         <form
           onSubmit={event => {
-            const data = {
-              id: this.props.tournamentsLength,
-              ...this.state
-            };
-            this.props.handleSubmit(event, data);
+            const data = this.state;
+            this.handleSubmit(event, data);
           }}
         >
           <div>
@@ -50,7 +59,7 @@ class Create extends Component {
 
           <div>
             <input
-              type="text"
+              type="date"
               value={date}
               name="date"
               placeholder="Tournament Date"
@@ -63,7 +72,7 @@ class Create extends Component {
 
           <div>
             <input
-              type="text"
+              type="number"
               value={time}
               name="time"
               placeholder="Start Time"
@@ -83,11 +92,11 @@ class Create extends Component {
               required
             >
               <option value="">Please Select</option>
-              <option value="8ball">8-Ball</option>
-              <option value="9ball">9-Ball</option>
-              <option value="10ball">10-Ball</option>
-              <option value="onePocket">One-Pocket</option>
-              <option value="straight">Straight Pool</option>
+              <option value="8-Ball">8-Ball</option>
+              <option value="9-Ball">9-Ball</option>
+              <option value="10-Ball">10-Ball</option>
+              <option value="OnePocket">One-Pocket</option>
+              <option value="Straight">Straight Pool</option>
             </select>
             <p>{game}</p>
           </div>
@@ -95,7 +104,7 @@ class Create extends Component {
 
           <div>
             <input
-              type="text"
+              type="number"
               value={fee}
               name="fee"
               placeholder="Buyin Fee"
@@ -122,13 +131,13 @@ class Create extends Component {
           <div>
             <textarea
               type="text"
-              value={moreDetails}
-              name="moreDetails"
+              value={moredetails}
+              name="moredetails"
               placeholder="Additional Details"
               onChange={this.handleChange}
               required
             />
-            <p>{moreDetails}</p>
+            <p>{moredetails}</p>
           </div>
           <br />
 

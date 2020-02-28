@@ -16,6 +16,10 @@ class TournamentDetails extends Component {
       .catch(this.context.setError);
   }
 
+  componentWillUnmount() {
+    this.context.clearTournament();
+  }
+
   render() {
     const {
       title,
@@ -24,7 +28,7 @@ class TournamentDetails extends Component {
       game,
       fee,
       address,
-      moreDetails,
+      moredetails,
       id
     } = this.context.tournament;
     console.log("tournament", this.context.tournament);
@@ -36,7 +40,7 @@ class TournamentDetails extends Component {
         <h2>Game Type: {game}</h2>
         <h2>Entry Fee: ${fee}</h2>
         <h2>Address of Venue: {address}</h2>
-        <p>Tournaments to note: {moreDetails}</p>
+        <p>Tournaments to note: {moredetails}</p>
       </div>
     );
   }

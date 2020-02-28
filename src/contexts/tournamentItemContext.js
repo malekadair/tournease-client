@@ -36,10 +36,9 @@ export class TournamentProvider extends Component {
     this.setState({ tournament });
   };
 
-  // clearTournament = () => {
-  //   this.setTournament(nullTournament);
-  //   this.setReviews([]);
-  // };
+  clearTournament = () => {
+    this.setTournament({});
+  };
 
   render() {
     const value = {

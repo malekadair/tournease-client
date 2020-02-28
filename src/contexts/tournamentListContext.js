@@ -28,6 +28,10 @@ export class TournamentsProvider extends Component {
     this.setState({ error: null });
   };
 
+  // setTournament = tournament => {
+  //   this.setState({ ...this.state.tournaments, tournament });
+  // };
+
   render() {
     const value = {
       tournaments: this.state.tournaments,

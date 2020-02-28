@@ -70,15 +70,16 @@ class App extends Component {
                 <PrivateRoute
                   exact
                   path={"/create"}
-                  render={routeProps => {
-                    return (
-                      <CreateTournament
-                        tournamentsLength={this.state.tournaments.length + 1}
-                        handleSubmit={this.handleSubmit}
-                        {...routeProps}
-                      />
-                    );
-                  }}
+                  component={CreateTournament}
+                  // render={routeProps => {
+                  //   return (
+                  //     <CreateTournament
+                  //       tournamentsLength={this.state.tournaments.length + 1}
+                  //       handleSubmit={this.handleSubmit}
+                  //       {...routeProps}
+                  //     />
+                  //   );
+                  // }}
                 />
                 <PublicOnlyRoute
                   exact
