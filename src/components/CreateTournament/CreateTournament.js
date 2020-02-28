@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import TournamentsContext from "../../contexts/tournamentListContext";
 
 class Create extends Component {
+  static contextType = TournamentsContext;
   constructor() {
     super();
     this.state = {

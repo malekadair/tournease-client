@@ -3,10 +3,10 @@ import TournamentList from "../TournamentList/TournamentList";
 
 class Home extends Component {
   render() {
-    const { tournaments, isLoading } = this.props;
     return (
       <div>
-        <TournamentList tournaments={tournaments} isLoading={isLoading} />
+        <h1>home</h1>
+        <TournamentList />
       </div>
     );
   }

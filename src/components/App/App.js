@@ -12,39 +12,43 @@ import PrivateRoute from "../Utils/PrivateRoute";
 import PublicOnlyRoute from "../Utils/PublicOnlyRoute";
 // import config from "../config";
 import dummyStore from "./dummyStore";
+import { TournamentsProvider } from "../../contexts/tournamentListContext";
+import { TournamentProvider } from "../../contexts/tournamentItemContext";
 
 class App extends Component {
-  constructor() {
-    const { tourneys } = dummyStore;
-    super();
-    this.state = {
-      tournaments: [],
-      isLoading: false
-    };
-  }
-  setTournaments = tournaments => {
-    this.setState({
-      tournaments,
-      error: null
-    });
-  };
+  // constructor() {
+  //   const { tourneys } = dummyStore;
+  //   super();
+  // this.state = {
+  //   tournaments: [],
+  //   isLoading: false
+  // };
+  // }
+  // setTournaments = tournaments => {
+  //   this.setState({
+  //     tournaments,
+  //     error: null
+  //   });
+  // };
 
-  componentDidMount() {
-    fetch(`http://localhost:8000/api/`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${TokenService.getAuthToken()}`
-      }
-    })
-      .then(res => {
-        if (!res.ok) {
-          return res.json().then(error => Promise.reject(error));
-        }
-        return res.json();
-      })
-      .then(this.setTournaments);
-  }
+  // componentDidMount() {
+  //   fetch(`http://localhost:8000/api/`, {
+  //     method: "GET",
+  //     headers: {
+  //       "content-type": "application/json",
+  //       authorization: `bearer ${TokenService.getAuthToken()}`
+  //     }
+  //   })
+  //     .then(res => {
+  //       if (!res.ok) {
+  //         return res.json().then(error => Promise.reject(error));
+  //       }
+  //       return res.json();
+  //     })
+  //     // .then(this.setTournaments)
+  //     .then(this.context.setTournament)
+  //     .catch(this.context.setError);
+  // }
 
   handleSubmit = (event, data) => {
     event.preventDefault();
@@ -56,73 +60,65 @@ class App extends Component {
   };
   render() {
     return (
-      <Router>
-        <div className="app">
-          <Nav />
-          <Switch>
-            <Route
-              exact
-              path={"/"}
-              render={routeProps => {
-                const { tournaments, isLoading } = this.state;
-                return (
-                  <Home
-                    {...routeProps}
-                    tournaments={tournaments}
-                    isLoading={isLoading}
-                  />
-                );
-              }}
-            />
-            <PrivateRoute
-              exact
-              path={"/create"}
-              render={routeProps => {
-                return (
-                  <CreateTournament
-                    tournamentsLength={this.state.tournaments.length + 1}
-                    handleSubmit={this.handleSubmit}
-                    {...routeProps}
-                  />
-                );
-              }}
-            />
-            <PublicOnlyRoute
-              exact
-              path={"/login"}
-              component={Login}
-              // render={routeProps => {
-              //   return (
-              //     <Login
-              //       tournamentsLength={this.state.tournaments.length + 1}
-              //       handleSubmit={this.handleSubmit}
-              //       {...routeProps}
-              //     />
-              //   );
-              // }}
-            />
-            <PrivateRoute
-              path={"/:tournid"}
-              render={routeProps => {
-                const { tournaments, isLoading } = this.state;
-                const { tournid } = routeProps.match.params;
-                const foundTournament = tournaments.find(
-                  ({ id }) => id == tournid
-                );
+      <TournamentsProvider>
+        <TournamentProvider>
+          <Router>
+            <div className="app">
+              <Nav />
+              <Switch>
+                <Route exact path={"/"} component={Home} />
+                <PrivateRoute
+                  exact
+                  path={"/create"}
+                  render={routeProps => {
+                    return (
+                      <CreateTournament
+                        tournamentsLength={this.state.tournaments.length + 1}
+                        handleSubmit={this.handleSubmit}
+                        {...routeProps}
+                      />
+                    );
+                  }}
+                />
+                <PublicOnlyRoute
+                  exact
+                  path={"/login"}
+                  component={Login}
+                  // render={routeProps => {
+                  //   return (
+                  //     <Login
+                  //       tournamentsLength={this.state.tournaments.length + 1}
+                  //       handleSubmit={this.handleSubmit}
+                  //       {...routeProps}
+                  //     />
+                  //   );
+                  // }}
+                />
+                <PrivateRoute
+                  path={"/:tournid"}
+                  component={TournamentDetails}
+                  // render={routeProps => {
+                  //   const { tournaments, isLoading } = this.state;
+                  //   const { tournid } = routeProps.match.params;
+                  //   const foundTournament = tournaments.find(
+                  //     ({ id }) => id == tournid
+                  //   );
 
-                return (
-                  <TournamentDetails
-                    {...routeProps}
-                    tournament={foundTournament}
-                    isLoading={isLoading}
-                  />
-                );
-              }}
-            />
-          </Switch>
-          <Footer />
-        </div>
-      </Router>
+                  //   return (
+                  //     <TournamentDetails
+                  //       {...routeProps}
+                  //       tournament={foundTournament}
+                  //       isLoading={isLoading}
+                  //     />
+                  //   );
+                  // }}
+                />
+              </Switch>
+              <Footer />
+            </div>
+          </Router>
+        </TournamentProvider>
+      </TournamentsProvider>
     );
   }
 }

@@ -12,7 +12,7 @@ class Tournament extends Component {
       address,
       moreDetails,
       id
-    } = this.props.tourney;
+    } = this.props.tournament;
     return (
       <div className="tournament">
         <h1>{title}</h1>

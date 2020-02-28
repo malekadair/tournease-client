@@ -7,6 +7,12 @@ class Login extends Component {
     super(props);
   }
   state = { error: null };
+
+  handleLoginSuccess = () => {
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || "/";
+    history.push(destination);
+  };
   handleSubmitJwtAuth = ev => {
     ev.preventDefault();
     this.setState({ error: null });
@@ -20,7 +26,7 @@ class Login extends Component {
         user_name.value = "";
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
-        this.props.onLoginSuccess();
+        this.handleLoginSuccess();
       })
       .catch(res => {
         this.setState({ error: res.error });
@@ -28,10 +34,12 @@ class Login extends Component {
   };
 
   render() {
+    const { error } = this.state;
     return (
       <section className="login">
         <h1>Login</h1>
         <form className="loginForm" onSubmit={this.handleSubmitJwtAuth}>
+          <div role="alert">{error && <p className="red">{error}</p>}</div>
           <label htmlFor="user_name">user_name:</label>
           <input
             type="text"
