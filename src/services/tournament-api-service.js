@@ -3,7 +3,6 @@ import TokenService from "./TokenService";
 
 const TournamentApiService = {
   getTournaments() {
-    console.log("call made");
     return fetch(`${config.API_ENDPOINT}`, {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`

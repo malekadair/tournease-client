@@ -37,16 +37,16 @@ class Create extends Component {
   };
 
   render() {
-    const { title, date, time, game, fee, address, moredetails } = this.state;
+    const { title, date, time, fee, address, moredetails } = this.state;
     return (
-      <section className="signup">
+      <section className="create">
         <form
           onSubmit={event => {
             const data = this.state;
             this.handleSubmit(event, data);
           }}
         >
-          <div>
+          <div className="formItem">
             <label htmlFor="title">Tournament Title: </label>
             <input
               type="text"
@@ -59,7 +59,7 @@ class Create extends Component {
           </div>
           <br />
 
-          <div>
+          <div className="formItem">
             <label htmlFor="date">Date of Tournament: </label>
             <input
               type="date"
@@ -72,7 +72,7 @@ class Create extends Component {
           </div>
           <br />
 
-          <div>
+          <div className="formItem">
             <label htmlFor="time">Start Time: </label>
             <input
               type="number"
@@ -85,7 +85,7 @@ class Create extends Component {
           </div>
           <br />
 
-          <div>
+          <div className="formItem">
             <label>Game Type: </label>
             <select
               value={this.state.game}
@@ -103,7 +103,7 @@ class Create extends Component {
           </div>
           <br />
 
-          <div>
+          <div className="formItem">
             <label htmlFor="fee">Buyin Fee: $</label>
             <input
               type="number"
@@ -116,7 +116,7 @@ class Create extends Component {
           </div>
           <br />
 
-          <div>
+          <div className="formItem">
             <label htmlFor="address">Address of Venue: </label>
             <input
               type="text"
@@ -129,7 +129,7 @@ class Create extends Component {
           </div>
           <br />
 
-          <div>
+          <div className="formItem">
             <label htmlFor="moredetails">More Details: </label>
             <textarea
               type="text"
@@ -143,7 +143,9 @@ class Create extends Component {
           <br />
 
           <button>Create Tournament</button>
-          <Link to="/">Go Back Home</Link>
+          <Link to="/" className="aButton">
+            Go Back Home
+          </Link>
         </form>
       </section>
     );

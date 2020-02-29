@@ -30,15 +30,14 @@ class TournamentDetails extends Component {
       address,
       moredetails
     } = this.context.tournament;
-    console.log("tournament", this.context.tournament);
     return (
-      <div>
-        <h1>Tournament Name: {title}</h1>
-        <h2>Date: {date}</h2>
-        <h2>Start Time: {time}</h2>
-        <h2>Game Type: {game}</h2>
-        <h2>Entry Fee: ${fee}</h2>
-        <h2>Address of Venue: {address}</h2>
+      <div className="details">
+        <h2 className="tourneyTitle">{title}</h2>
+        <p className="tourneyText">Date: {date}</p>
+        <p className="tourneyText">Start Time: {time}</p>
+        <p className="tourneyText">Game Type: {game}</p>
+        <p className="tourneyText">Entry Fee: ${fee}</p>
+        <p className="tourneyText">Address of Venue: {address}</p>
         <p>Tournaments to note: {moredetails}</p>
       </div>
     );

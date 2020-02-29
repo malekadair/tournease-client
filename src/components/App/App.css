@@ -1,15 +1,336 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* CSS RESET ABOVE THIS */
+
 nav {
   display: flex;
-  justify-content: space-around;
-  align-content: center;
+  justify-content: space-between;
   min-height: 10vh;
-  background: #ccc;
+  background: rgb(196, 166, 166);
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
 }
 
 .nav-links {
-  width: 25%;
   display: flex;
-  justify-content: space-around;
+  width: 300px;
+  justify-content: space-evenly;
   align-items: center;
   list-style: none;
+  font-size: 25px;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Lato:200, 400");
+@import url("https://fonts.googleapis.com/css?family=Lustria");
+
+* {
+  box-sizing: border-box;
+}
+html {
+  background-color: rgb(210, 210, 210);
+}
+.mainContent {
+  text-align: center;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  margin: auto;
+}
+
+.home {
+  display: flex;
+  padding: 30px;
+  flex-direction: column;
+  align-items: center;
+}
+
+#upcoming {
+  text-align: center;
+}
+
+.aButton,
+button {
+  color: #571717 !important;
+  /* text-transform: uppercase; */
+  background: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 5px 10px;
+  margin: 5px;
+  border: 3px solid #555 !important;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+}
+
+.aButton:hover,
+button:hover {
+  color: #494949 !important;
+  border-radius: 15px;
+  border-color: #571717 !important;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+.tournamentList {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tournament {
+  /* display: flex;
+   */
+  text-align: center;
+  background-color: white;
+  width: 350px;
+  height: 200px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 15px 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.tournament:hover {
+  background-color: rgb(252, 240, 240);
+}
+.cardText {
+  font-size: 20px;
+  margin: 2px 0;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tourneyTitle {
+  margin: 20px;
+  font-size: 30px;
+  font-weight: 800;
+}
+.tourneyText {
+  margin: 5px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.create {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginText {
+  margin-top: 10px;
+}
+
+.formItem {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 20px;
+  align-items: center;
+}
+input,
+select,
+textarea {
+  border-radius: 4px;
+  border: 2px solid #555;
+  margin: 0 5px;
+  width: 175px;
+}
+input,
+select {
+  height: 25px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  max-width: 600px;
+  width: 100%;
+}
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+a {
+  text-decoration: none;
+  color: #571717;
+}
+
+a:hover {
+  color: rgb(0, 0, 0);
+  /* text-decoration: underline; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lustria";
+  font-weight: 100;
+  color: #222;
+}
+
+p {
+  color: #555;
+}
+
+.blue {
+  color: #477acc;
+}
+
+.yellow {
+  color: #eac435;
+}
+
+.green {
+  color: #09a55e;
+}
+
+.red {
+  color: #ca1551;
+}
+
+.orange {
+  color: #fb4d3d;
 }

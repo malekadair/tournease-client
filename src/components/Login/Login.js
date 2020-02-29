@@ -34,30 +34,33 @@ class Login extends Component {
     const { error } = this.state;
     return (
       <section className="login">
-        <h1>Login</h1>
-        <h3>
-          To demo the platform use: <br />
-          User Name: admin <br />
-          Password: admin
-        </h3>
+        <h2>Login</h2>
+        <div className="loginText">
+          <p>To demo the platform use:</p>
+          <p>User Name: admin</p>
+          <p>Password: admin</p>
+        </div>
         <form className="loginForm" onSubmit={this.handleSubmitJwtAuth}>
           <div role="alert">{error && <p className="red">{error}</p>}</div>
-          <label htmlFor="user_name">user_name:</label>
-          <input
-            type="text"
-            name="user_name"
-            value={this.state.user_name}
-            required
-          />
+          <div className="formItem">
+            <label htmlFor="user_name">User Name:</label>
+            <input
+              type="text"
+              name="user_name"
+              value={this.state.user_name}
+              required
+            />
+          </div>
           <br />
-
-          <label htmlFor="password">password:</label>
-          <input
-            type="password"
-            name="password"
-            value={this.state.password}
-            required
-          />
+          <div className="formItem">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={this.state.password}
+              required
+            />
+          </div>
           <br />
           <button type="submit">Login</button>
         </form>

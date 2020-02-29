@@ -5,19 +5,22 @@ import TokenService from "../../services/TokenService";
 
 class Home extends Component {
   renderTournamentList = () => {
-    return <TournamentList />;
+    return (
+      <div>
+        <h2 id="upcoming">Upcoming Tournaments:</h2>
+        <TournamentList />
+      </div>
+    );
   };
   renderLogin = () => {
     return <MainContent />;
   };
   render() {
     return (
-      <div>
-        <h1>home</h1>
+      <div className="home">
         {TokenService.hasAuthToken()
           ? this.renderTournamentList()
           : this.renderLogin()}
-        {/* <TournamentList /> */}
       </div>
     );
   }

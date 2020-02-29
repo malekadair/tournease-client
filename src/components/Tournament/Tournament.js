@@ -5,15 +5,16 @@ class Tournament extends Component {
   render() {
     const { title, date, time, game, fee, address, id } = this.props.tournament;
     return (
-      <div className="tournament">
-        <h1>{title}</h1>
-        <h2>{date}</h2>
-        <h2>{time}</h2>
-        <h2>{game}</h2>
-        <h2>${fee}</h2>
-        <h2>{address}</h2>
-        <Link to={`/${id}`}>More details</Link>
-      </div>
+      <Link to={`/${id}`}>
+        <div className="tournament">
+          <h2>{title}</h2>
+          <p className="cardText">{date}</p>
+          <p className="cardText">Start Time: {time}</p>
+          <p className="cardText">{game}</p>
+          <p className="cardText">Entry fee: ${fee}</p>
+          <p className="cardText">{address}</p>
+        </div>
+      </Link>
     );
   }
 }

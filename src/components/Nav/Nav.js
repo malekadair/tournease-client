@@ -29,15 +29,17 @@ class Nav extends Component {
     return (
       <nav>
         <Link to="/">
-          <h2>TournEase</h2>
+          <h1>TournEase</h1>
         </Link>
         <ul className="nav-links">
           <li>
-            <Link to="/">Find Tournaments</Link>
+            <Link to="/">Home</Link>
           </li>
+          <li>|</li>
           <li>
             <Link to="/create">Create</Link>
           </li>
+          <li>|</li>
           <li>
             {TokenService.hasAuthToken()
               ? this.renderLogout()
