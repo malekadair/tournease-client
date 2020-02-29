@@ -28,8 +28,7 @@ class TournamentDetails extends Component {
       game,
       fee,
       address,
-      moredetails,
-      id
+      moredetails
     } = this.context.tournament;
     console.log("tournament", this.context.tournament);
     return (

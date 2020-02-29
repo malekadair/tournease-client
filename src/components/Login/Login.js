@@ -3,9 +3,6 @@ import AuthApiService from "../../services/auth-api-service";
 import TokenService from "../../services/TokenService";
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-  }
   state = { error: null };
 
   handleLoginSuccess = () => {
@@ -38,6 +35,11 @@ class Login extends Component {
     return (
       <section className="login">
         <h1>Login</h1>
+        <h3>
+          To demo the platform use: <br />
+          User Name: admin <br />
+          Password: admin
+        </h3>
         <form className="loginForm" onSubmit={this.handleSubmitJwtAuth}>
           <div role="alert">{error && <p className="red">{error}</p>}</div>
           <label htmlFor="user_name">user_name:</label>

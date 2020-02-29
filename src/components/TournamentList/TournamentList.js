@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Tournament from "../Tournament/Tournament";
-import Loading from "../Loading/Loading";
+// import Loading from "../Loading/Loading";
 import TournamentApiService from "../../services/tournament-api-service";
-import TokenService from "../../services/TokenService";
+// import TokenService from "../../services/TokenService";
 import TournamentsContext from "../../contexts/tournamentListContext";
 
 class TournamentList extends Component {

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import TournamentsContext from "../../contexts/tournamentListContext";
 import TournamentApiService from "../../services/tournament-api-service";
 
@@ -19,12 +20,13 @@ class Create extends Component {
 
   handleSubmit = (ev, data) => {
     ev.preventDefault();
-    // const { thing } = this.context;
-    // const { text, rating } = ev.target;
 
     TournamentApiService.postTournament(data)
       .then()
       .catch(this.context.setError);
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || "/";
+    history.push(destination);
   };
 
   handleChange = event => {
@@ -45,19 +47,20 @@ class Create extends Component {
           }}
         >
           <div>
+            <label htmlFor="title">Tournament Title: </label>
             <input
               type="text"
               value={title}
               name="title"
-              placeholder="Tournament Name"
+              placeholder="e.g. Frank's Weekly 10-ball"
               onChange={this.handleChange}
               required
             />
-            <p>{title}</p>
           </div>
           <br />
 
           <div>
+            <label htmlFor="date">Date of Tournament: </label>
             <input
               type="date"
               value={date}
@@ -66,20 +69,19 @@ class Create extends Component {
               onChange={this.handleChange}
               required
             />
-            <p>{date}</p>
           </div>
           <br />
 
           <div>
+            <label htmlFor="time">Start Time: </label>
             <input
               type="number"
               value={time}
               name="time"
-              placeholder="Start Time"
+              placeholder="e.g. 10"
               onChange={this.handleChange}
               required
             />
-            <p>{time}</p>
           </div>
           <br />
 
@@ -98,37 +100,37 @@ class Create extends Component {
               <option value="OnePocket">One-Pocket</option>
               <option value="Straight">Straight Pool</option>
             </select>
-            <p>{game}</p>
           </div>
           <br />
 
           <div>
+            <label htmlFor="fee">Buyin Fee: $</label>
             <input
               type="number"
               value={fee}
               name="fee"
-              placeholder="Buyin Fee"
+              placeholder="e.g. 20"
               onChange={this.handleChange}
               required
             />
-            <p>{fee}</p>
           </div>
           <br />
 
           <div>
+            <label htmlFor="address">Address of Venue: </label>
             <input
               type="text"
               value={address}
               name="address"
-              placeholder="Venue Address"
+              placeholder="e.g. 123 Main St."
               onChange={this.handleChange}
               required
             />
-            <p>{address}</p>
           </div>
           <br />
 
           <div>
+            <label htmlFor="moredetails">More Details: </label>
             <textarea
               type="text"
               value={moredetails}
@@ -137,14 +139,11 @@ class Create extends Component {
               onChange={this.handleChange}
               required
             />
-            <p>{moredetails}</p>
           </div>
           <br />
 
           <button>Create Tournament</button>
-          <button type="button">Back</button>
-          <br />
-          <button type="reset">Reset Form</button>
+          <Link to="/">Go Back Home</Link>
         </form>
       </section>
     );
