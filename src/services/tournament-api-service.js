@@ -3,7 +3,7 @@ import TokenService from "./TokenService";
 
 const TournamentApiService = {
   getTournaments() {
-    return fetch(`${config.API_ENDPOINT}`, {
+    return fetch(`${config.API_BASE_URL}`, {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`
       }
@@ -12,7 +12,7 @@ const TournamentApiService = {
     );
   },
   getTournament(tournamentId) {
-    return fetch(`${config.API_ENDPOINT}/${tournamentId}`, {
+    return fetch(`${config.API_BASE_URL}/${tournamentId}`, {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`
       }
@@ -23,7 +23,7 @@ const TournamentApiService = {
   postTournament(data) {
     const { title, date, time, game, fee, address, moredetails } = data;
 
-    return fetch(`${config.API_ENDPOINT}`, {
+    return fetch(`${config.API_BASE_URL}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -37,7 +37,6 @@ const TournamentApiService = {
         fee,
         address,
         moredetails
-        // data
       })
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
