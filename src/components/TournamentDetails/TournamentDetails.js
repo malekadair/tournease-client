@@ -38,7 +38,7 @@ class TournamentDetails extends Component {
         <p className="tourneyText">Game Type: {game}</p>
         <p className="tourneyText">Entry Fee: ${fee}</p>
         <p className="tourneyText">Address of Venue: {address}</p>
-        <p>Tournaments to note: {moredetails}</p>
+        <p>Things to note: {moredetails}</p>
       </div>
     );
   }

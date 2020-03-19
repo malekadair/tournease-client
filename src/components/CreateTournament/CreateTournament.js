@@ -46,106 +46,105 @@ class Create extends Component {
             this.handleSubmit(event, data);
           }}
         >
-          <div className="formItem">
-            <label htmlFor="title">Tournament Title: </label>
-            <input
-              type="text"
-              value={title}
-              name="title"
-              placeholder="e.g. Frank's Weekly 10-ball"
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-          <br />
+          <div className="formInputs">
+            <div className="createLabels">
+              <label htmlFor="title" className="labelLeft">
+                Tournament Title:{" "}
+              </label>
+              <label htmlFor="date" className="labelLeft">
+                Date of Tournament:{" "}
+              </label>
+              <label htmlFor="time" className="labelLeft">
+                Start Time:{" "}
+              </label>
+              <label className="labelLeft">Game Type: </label>
+              <label htmlFor="fee" className="labelLeft">
+                Buyin Fee: $
+              </label>
+              <label htmlFor="address" className="labelLeft">
+                Address of Venue:{" "}
+              </label>
+              <label htmlFor="moredetails" className="labelLeft">
+                More Details:{" "}
+              </label>
+            </div>
+            <div className="createInputs">
+              <input
+                type="text"
+                value={title}
+                name="title"
+                placeholder="e.g. Frank's Weekly 10-ball"
+                onChange={this.handleChange}
+                required
+              />
 
-          <div className="formItem">
-            <label htmlFor="date">Date of Tournament: </label>
-            <input
-              type="date"
-              value={date}
-              name="date"
-              placeholder="Tournament Date"
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-          <br />
+              <input
+                type="date"
+                value={date}
+                name="date"
+                placeholder="Tournament Date"
+                onChange={this.handleChange}
+                required
+              />
 
-          <div className="formItem">
-            <label htmlFor="time">Start Time: </label>
-            <input
-              type="number"
-              value={time}
-              name="time"
-              placeholder="e.g. 10"
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-          <br />
+              <input
+                type="number"
+                value={time}
+                name="time"
+                placeholder="e.g. 10"
+                onChange={this.handleChange}
+                required
+              />
 
-          <div className="formItem">
-            <label>Game Type: </label>
-            <select
-              value={this.state.game}
-              onChange={this.handleChange}
-              name="game"
-              required
-            >
-              <option value="">Please Select</option>
-              <option value="8-Ball">8-Ball</option>
-              <option value="9-Ball">9-Ball</option>
-              <option value="10-Ball">10-Ball</option>
-              <option value="OnePocket">One-Pocket</option>
-              <option value="Straight">Straight Pool</option>
-            </select>
-          </div>
-          <br />
+              <select
+                value={this.state.game}
+                onChange={this.handleChange}
+                name="game"
+                required
+              >
+                <option value="">Please Select</option>
+                <option value="8-Ball">8-Ball</option>
+                <option value="9-Ball">9-Ball</option>
+                <option value="10-Ball">10-Ball</option>
+                <option value="OnePocket">One-Pocket</option>
+                <option value="Straight">Straight Pool</option>
+              </select>
 
-          <div className="formItem">
-            <label htmlFor="fee">Buyin Fee: $</label>
-            <input
-              type="number"
-              value={fee}
-              name="fee"
-              placeholder="e.g. 20"
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-          <br />
+              <input
+                type="number"
+                value={fee}
+                name="fee"
+                placeholder="e.g. 20"
+                onChange={this.handleChange}
+                required
+              />
 
-          <div className="formItem">
-            <label htmlFor="address">Address of Venue: </label>
-            <input
-              type="text"
-              value={address}
-              name="address"
-              placeholder="e.g. 123 Main St."
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-          <br />
+              <div className="formItem">
+                <input
+                  type="text"
+                  value={address}
+                  name="address"
+                  placeholder="e.g. 123 Main St."
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
 
-          <div className="formItem">
-            <label htmlFor="moredetails">More Details: </label>
-            <textarea
-              type="text"
-              value={moredetails}
-              name="moredetails"
-              placeholder="Additional Details"
-              onChange={this.handleChange}
-              required
-            />
+              <textarea
+                type="text"
+                value={moredetails}
+                name="moredetails"
+                placeholder="Additional Details"
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-          <br />
-
-          <button>Create Tournament</button>
-          <Link to="/" className="aButton">
-            Go Back Home
-          </Link>
+          <div className="formButtons">
+            <button>Create Tournament</button>
+            <Link to="/" className="aButton">
+              Go Back Home
+            </Link>
+          </div>
         </form>
       </section>
     );
