@@ -4,7 +4,7 @@
   "name": "tournease-client",
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
+    { "src": "./*", "dest": "/index.html" }
   ],
   "env": {
     "REACT_APP_API_BASE_URL": "https://agile-reaches-26051.herokuapp.com/api"

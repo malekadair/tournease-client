@@ -178,7 +178,6 @@ html {
 .aButton,
 button {
   color: #571717 !important;
-  /* text-transform: uppercase; */
   background: #ffffff;
   font-size: 15px;
   font-weight: 500;
@@ -206,8 +205,6 @@ button:hover {
 }
 
 .tournament {
-  /* display: flex;
-   */
   text-align: center;
   background-color: white;
   width: 350px;
@@ -237,6 +234,7 @@ button:hover {
 }
 .tourneyText {
   margin: 5px;
+  font-size: 20px;
 }
 body {
   margin: 0;
@@ -321,9 +319,18 @@ a {
 
 a:hover {
   color: rgb(0, 0, 0);
-  /* text-decoration: underline; */
 }
-
+.mainContent p {
+  font-size: calc(14px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc(1.8em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+}
+.mainP {
+  max-width: 800px;
+  margin: 10px;
+}
+.mainContent h2 {
+  font-size: calc(25px + (30 - 20) * ((100vw - 300px) / (1600 - 300)));
+}
 h1,
 h2,
 h3,
@@ -331,7 +338,7 @@ h4,
 h5,
 h6 {
   font-family: "Lustria";
-  font-weight: 100;
+  font-weight: 200;
   color: #222;
 }
 

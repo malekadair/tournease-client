@@ -1,10 +1,5 @@
 import React, { Component } from "react";
 
-// export const nullTournament = {
-//   author: {},
-//   tags: []
-// };
-
 const TournamentContext = React.createContext({
   tournament: {},
   error: null,

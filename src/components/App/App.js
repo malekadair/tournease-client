@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Nav from "../Nav/Nav";
-// import Footer from "../Footer/Footer";
 import Home from "../Home/Home";
 import CreateTournament from "../CreateTournament/CreateTournament";
 import TournamentDetails from "../TournamentDetails/TournamentDetails";
@@ -41,7 +40,6 @@ class App extends Component {
                   component={TournamentDetails}
                 />
               </Switch>
-              {/* <Footer /> */}
             </div>
           </Router>
         </TournamentProvider>
