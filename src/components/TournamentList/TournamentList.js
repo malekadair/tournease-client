@@ -13,7 +13,7 @@ class TournamentList extends Component {
   }
   renderTournaments() {
     const { tournaments = [] } = this.context;
-    return tournaments.map(tournament => (
+    return tournaments.reverse().map(tournament => (
       <Tournament key={tournament.id} tournament={tournament} />
     ));
   }
@@ -25,8 +25,8 @@ class TournamentList extends Component {
         {error ? (
           <p className="red">There was an error, try again</p>
         ) : (
-          this.renderTournaments()
-        )}
+            this.renderTournaments()
+          )}
       </section>
     );
   }

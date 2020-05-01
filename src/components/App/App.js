@@ -12,6 +12,7 @@ import { TournamentsProvider } from "../../contexts/tournamentListContext";
 import { TournamentProvider } from "../../contexts/tournamentItemContext";
 
 class App extends Component {
+// Handles tournament form submission and sets new state
   handleSubmit = (event, data) => {
     event.preventDefault();
     const newTournaments = [...this.state.tournaments, data];
@@ -28,6 +29,7 @@ class App extends Component {
             <div className="app">
               <Nav />
               <Switch>
+                {/*  */}
                 <Route exact path={"/"} component={Home} />
                 <PrivateRoute
                   exact
