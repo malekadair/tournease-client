@@ -6,10 +6,12 @@ class Login extends Component {
   state = { error: null };
 
   handleLoginSuccess = () => {
+    // routes back to previous page
     const { location, history } = this.props;
     const destination = (location.state || {}).from || "/";
     history.push(destination);
   };
+  // submits jwt auth and posts login if no error
   handleSubmitJwtAuth = ev => {
     ev.preventDefault();
     this.setState({ error: null });
@@ -20,8 +22,10 @@ class Login extends Component {
       password: password.value
     })
       .then(res => {
+        // resets fields of inputs
         user_name.value = "";
         password.value = "";
+        // saves auth token to local storage
         TokenService.saveAuthToken(res.authToken);
         this.handleLoginSuccess();
       })

@@ -4,6 +4,7 @@ import MainContent from "../MainContent/MainContent";
 import TokenService from "../../services/TokenService";
 
 class Home extends Component {
+  // list of all upcoming tournaments
   renderTournamentList = () => {
     return (
       <div>
@@ -13,9 +14,11 @@ class Home extends Component {
     );
   };
   renderLogin = () => {
+    // welcome to the app landing page content
     return <MainContent />;
   };
   render() {
+    // conditionally renders homepage content
     return (
       <div className="home">
         {TokenService.hasAuthToken()

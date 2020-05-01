@@ -9,6 +9,7 @@ class Nav extends Component {
   };
 
   renderLogout() {
+    // displays logout button 
     return (
       <div className="Header__logged-in">
         <Link onClick={this.handleLogoutClick} to="/">
@@ -26,6 +27,7 @@ class Nav extends Component {
   }
 
   render() {
+    // conditionally renders login/logout buttons
     return (
       <nav>
         <Link to="/">
@@ -41,6 +43,7 @@ class Nav extends Component {
           </li>
           <li>|</li>
           <li>
+            {/* checks to see if user has auth token */}
             {TokenService.hasAuthToken()
               ? this.renderLogout()
               : this.renderLogin()}

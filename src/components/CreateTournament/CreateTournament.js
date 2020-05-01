@@ -4,9 +4,11 @@ import TournamentsContext from "../../contexts/tournamentListContext";
 import TournamentApiService from "../../services/tournament-api-service";
 
 class Create extends Component {
+  // sets context
   static contextType = TournamentsContext;
   constructor() {
     super();
+    // state will continuously be updated with each change to these input values
     this.state = {
       title: "",
       date: "",
@@ -20,16 +22,19 @@ class Create extends Component {
 
   handleSubmit = (ev, data) => {
     ev.preventDefault();
-
+    // posts tournament with data from inputs
     TournamentApiService.postTournament(data)
       .then()
       .catch(this.context.setError);
+
+    // redirects to previous page
     const { location, history } = this.props;
     const destination = (location.state || {}).from || "/";
     history.push(destination);
   };
 
   handleChange = event => {
+    // makes this a controlled form by continuously updating state upon each change to inputs
     const { name, value, type, checked } = event.target;
     type === "checkbox"
       ? this.setState({ [name]: checked })
@@ -37,11 +42,13 @@ class Create extends Component {
   };
 
   render() {
+
     const { title, date, time, fee, address, moredetails } = this.state;
     return (
       <section className="create">
         <form
           onSubmit={event => {
+            // sets up data to be passed into the the handleSubmit func
             const data = this.state;
             this.handleSubmit(event, data);
           }}

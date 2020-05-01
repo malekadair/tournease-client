@@ -6,6 +6,8 @@ import "../App/App.css";
 class MainContent extends Component {
   render() {
     return (
+      // simple content in place to help direct users once they land on homepage
+      // with no prior context of what the app is designed to do.
       <section className="mainContent">
         <h2>What is TournEase?</h2>
         <p className="mainP">

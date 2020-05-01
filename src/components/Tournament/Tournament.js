@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 
 class Tournament extends Component {
   render() {
+    // deconstructs variables from props
     const { title, date, time, game, fee, address, id } = this.props.tournament;
+
     return (
       <Link to={`/${id}`}>
         <div className="tournament">
