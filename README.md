@@ -1,4 +1,4 @@
-# App Name: GottaLotto
+# App Name: TournEase
 
 Author: [Malek Adair](https://github.com/malekadair)
 
@@ -6,7 +6,7 @@ Author: [Malek Adair](https://github.com/malekadair)
 
 Live app: [TournEase](https://tournease-client.malekadair.now.sh/)
 
-## About GottaLotto
+## About TournEase
 
 The project allows you to login as an admin, view upcoming tournaments, and post an upcoming tournament.
 
